@@ -18,7 +18,6 @@ const config = {
     rules: [
       {
         test: /\.css$/,
-        exclude: /node_modules/,
         use: [
           {
             loader: "style-loader"
@@ -35,14 +34,6 @@ const config = {
         ]
       },
       {
-        test: /\.jsx?$/,
-        enforce: "pre",
-        loader: "eslint-loader",
-        options: {
-          emitWarning: true
-        }
-      },
-      {
         test: /.jsx?$/,
         use: {
           loader: "babel-loader"
@@ -52,8 +43,8 @@ const config = {
     ]
   },
   plugins: [
-    new NpmInstallPlugin(), 
-    new webpack.HotModuleReplacementPlugin(), 
+    new NpmInstallPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ]
 };

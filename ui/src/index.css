@@ -1,5 +1,78 @@
-@import-normalize; /* stylelint-disable-line */
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import-normalize;
+
+/* stylelint-disable-line */
 
 body {
   background-color: aliceblue;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Nunito", sans-serif !important;
+}
+
+.message,
+.button,
+.ui {
+  font-family: "Nunito", sans-serif !important;
+}
+
+.menuStyle {
+  height: 50px;
+  border: "none";
+  border-radius: 0;
+  box-shadow: "none";
+  margin-bottom: "1em";
+  margin-top: "4em";
+  transition: "box-shadow 0.5s ease, padding 0.5s ease";
+}
+
+.header.item {
+  padding-left: 0px;
+}
+
+.grid {
+  position: relative;
+}
+
+.grid:before {
+  background-color: #f0f0f0;
+  box-shadow: 0px 0px 0px 1px #dddddd inset;
+  content: "";
+  height: calc(100% - 2rem);
+  left: 1rem;
+  top: 1rem;
+  position: absolute;
+  width: calc(100% - 2rem);
+}
+
+.ui.divided.grid:before,
+.celled.grid:before {
+  display: none;
+}
+
+.ui.aligned .column:after {
+  display: none !important;
+}
+
+.grid .column:not(.row):not(.grid):after {
+  background-color: rgba(86, 61, 124, 0.15);
+  box-shadow: 0px 0px 0px 1px rgba(86, 61, 124, 0.2) inset;
+  content: "";
+  display: block;
+  min-height: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+  .stackable.grid:before {
+    width: 100%;
+    left: 0em;
+  }
+}
+.ui.bottom.attached.segment.active.tab {
+  min-width: 225px;
 }
