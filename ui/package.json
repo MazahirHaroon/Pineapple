@@ -1,0 +1,93 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "description": "A React Boilerplate Configuration",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --env=prod",
+    "start": "webpack-dev-server --env=dev",
+    "precommit": "lint-staged",
+    "scripts": "jest"
+  },
+  "lint-staged": {
+    "gitDir": "../",
+    "linters": {
+      "ui/src/**/*.{js,json,css,jsx}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
+  },
+  "author": "Boy With Silver Wings <agney@outlook.in>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-jsx-source": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "compression-webpack-plugin": "^1.0.1",
+    "copy-webpack-plugin": "^4.1.1",
+    "css-loader": "^0.28.5",
+    "detect-port": "^1.2.1",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.6.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "husky": "^0.14.3",
+    "image-webpack-loader": "^3.4.0",
+    "jest": "^20.0.4",
+    "jest-enzyme": "^3.8.3",
+    "lint-staged": "^4.2.3",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-loader": "^2.0.7",
+    "postcss-normalize": "^4.0.0",
+    "prettier": "^1.7.4",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "react-test-renderer": "^15.6.2",
+    "style-loader": "^0.18.2",
+    "stylelint": "^8.2.0",
+    "stylelint-config-standard": "^17.0.0",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-merge": "^4.1.0",
+    "webpack-monitor": "^1.0.13",
+    "workbox-webpack-plugin": "^2.1.0"
+  },
+  "dependencies": {
+    "core-js": "^2.5.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.76.0",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MazahirHaroon/Pineapple.git"
+  }
+}

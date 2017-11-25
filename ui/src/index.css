@@ -1,0 +1,5 @@
+@import-normalize; /* stylelint-disable-line */
+
+body {
+  background-color: aliceblue;
+}
