@@ -73,3 +73,6 @@ h5 {
     left: 0em;
   }
 }
+.ui.bottom.attached.segment.active.tab {
+  min-width: 225px;
+}
