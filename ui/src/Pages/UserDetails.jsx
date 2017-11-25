@@ -90,13 +90,22 @@ class UserProfile extends Component {
                   type="text"
                 />
               </Form.Group>
-              <Form.Input
-                fluid
-                icon="info"
-                iconPosition="left"
-                placeholder="Blood Group"
-                type="text"
-              />
+              <Form.Group widths="equal">
+                <Form.Input
+                  fluid
+                  icon="info"
+                  iconPosition="left"
+                  placeholder="Blood Group"
+                  type="text"
+                />
+                <Form.Input
+                  fluid
+                  icon="user circle"
+                  iconPosition="left"
+                  placeholder="Emergency Contact"
+                  type="text"
+                />
+              </Form.Group>
               <Form.Group>
                 <Button
                   fluid
