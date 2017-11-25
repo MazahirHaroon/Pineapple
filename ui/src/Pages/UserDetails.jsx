@@ -38,16 +38,14 @@ class UserProfile extends Component {
                   icon="user"
                   iconPosition="left"
                   placeholder="Name"
-                  readOnly
                 />
                 <Form.Input
                   icon="calendar"
                   iconPosition="left"
                   placeholder="Age"
-                  readOnly
                 />
               </Form.Group>
-              <Form.Field control={TextArea} placeholder="Address" readOnly />
+              <Form.Field control={TextArea} placeholder="Address" />
               <Form.Group>
                 <Button fluid size="large">
                   Back
@@ -66,7 +64,11 @@ class UserProfile extends Component {
         )
       },
       {
-        menuItem: { key: "basic", icon: "male", content: "Basic Details" },
+        menuItem: {
+          key: "basic",
+          icon: "male",
+          content: "Basic Details"
+        },
         render: () => (
           <Tab.Pane>
             <Header as="h2" color="teal" textAlign="center">
@@ -76,13 +78,13 @@ class UserProfile extends Component {
               <Form.Group widths="equal">
                 <Form.Input
                   fluid
-                  icon="user"
+                  icon="info"
                   iconPosition="left"
                   placeholder="Height"
                 />
                 <Form.Input
                   fluid
-                  icon="lock"
+                  icon="info"
                   iconPosition="left"
                   placeholder="Weight"
                   type="text"
@@ -90,7 +92,7 @@ class UserProfile extends Component {
               </Form.Group>
               <Form.Input
                 fluid
-                icon="lock"
+                icon="info"
                 iconPosition="left"
                 placeholder="Blood Group"
                 type="text"
@@ -117,7 +119,11 @@ class UserProfile extends Component {
         )
       },
       {
-        menuItem: { key: "allergy", icon: "remove user", content: "Allergies" },
+        menuItem: {
+          key: "allergy",
+          icon: "remove user",
+          content: "Allergies"
+        },
         render: () => (
           <Tab.Pane>
             <Header as="h2" color="teal" textAlign="center">
@@ -127,7 +133,6 @@ class UserProfile extends Component {
               <Form.Field
                 control={TextArea}
                 placeholder="Enter any allergies that you have if any."
-                readOnly
               />
               <Form.Group>
                 <Button
@@ -165,13 +170,12 @@ class UserProfile extends Component {
               <Form.Field
                 control={TextArea}
                 placeholder="Enter any major operations that you had."
-                readOnly
               />
               <Form.Group>
                 <Button
                   fluid
                   size="large"
-                  onClick={() => this.handleTabChange(1)}
+                  onClick={() => this.handleTabChange(2)}
                 >
                   Back
                 </Button>
@@ -179,9 +183,52 @@ class UserProfile extends Component {
                   color="teal"
                   fluid
                   size="large"
-                  onClick={() => this.handleTabChange(3)}
+                  onClick={() => this.handleTabChange(4)}
                 >
                   Continue
+                </Button>
+              </Form.Group>
+            </Form>
+          </Tab.Pane>
+        )
+      },
+      {
+        menuItem: {
+          key: "insurance",
+          icon: "hand peace",
+          content: "Insurance Details"
+        },
+        render: () => (
+          <Tab.Pane>
+            <Header as="h2" color="teal" textAlign="center">
+              Enter your Insurance Details.
+            </Header>
+            <Form size="large">
+              <Form.Group widths="equal">
+                <Form.Input
+                  fluid
+                  icon="user outline"
+                  iconPosition="left"
+                  placeholder="Provider"
+                />
+                <Form.Input
+                  fluid
+                  icon="hashtag"
+                  iconPosition="left"
+                  placeholder="Policy Number"
+                  type="text"
+                />
+              </Form.Group>
+              <Form.Group>
+                <Button
+                  fluid
+                  size="large"
+                  onClick={() => this.handleTabChange(3)}
+                >
+                  Back
+                </Button>
+                <Button color="blue" fluid size="large">
+                  Complete
                 </Button>
               </Form.Group>
             </Form>

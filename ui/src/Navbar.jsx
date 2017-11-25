@@ -18,9 +18,12 @@ class Navbar extends Component {
             <Image size="mini" src={Logo} />
           </Menu.Item>
           <Menu.Menu position="right">
-            <Menu.Item as="a" name="login" active={activeItem === "login"}>
-              Login
-            </Menu.Item>
+            <Dropdown text="Login" pointing className="link item">
+              <Dropdown.Menu>
+                <Dropdown.Item as="a">as Patient</Dropdown.Item>
+                <Dropdown.Item as="a">as Doctor</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Menu.Menu>
         </Container>
       </Menu>
