@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Register from "./Pages/Register";
 import UserDetails from "./Pages/UserDetails";
+import PatientSearch from "./Doctor/PatientSearch";
+import Profile from "./Patient/Profile";
 
 class App extends Component {
   constructor(props) {
@@ -11,10 +13,12 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="main-content">
         <Navbar />
         {/* <Register /> */}
-        <UserDetails />
+        {/* <UserDetails /> */}
+        {/* <PatientSearch /> */}
+        <Profile />
       </div>
     );
   }
