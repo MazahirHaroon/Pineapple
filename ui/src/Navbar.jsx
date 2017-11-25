@@ -18,13 +18,6 @@ class Navbar extends Component {
             <Image size="mini" src={Logo} />
           </Menu.Item>
           <Menu.Menu position="right">
-            <Menu.Item
-              as="a"
-              name="register"
-              active={activeItem === "register"}
-            >
-              Register
-            </Menu.Item>
             <Menu.Item as="a" name="login" active={activeItem === "login"}>
               Login
             </Menu.Item>
