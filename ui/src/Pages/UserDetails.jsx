@@ -8,15 +8,55 @@ import {
   Tab,
   Transition
 } from "semantic-ui-react";
+import axios from "axios";
 
 class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
+      height: "",
+      weight: "",
+      age: 0,
+      bloodGroup: "",
+      contact: "",
+      allergies: "",
+      operations: "",
+      provider: "",
+      policyNum: "",
       activeIndex: 0
     };
-
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.registrationComplete = this.registrationComplete.bind(this);
+  }
+  registrationComplete(event) {
+    event.preventDefault();
+    axios
+      .post(`http://20.20.7.163:3000/api/Patient`, {
+        $class: "com.phoenix.Patient",
+        aadharId: localStorage.getItem("user"),
+        firstName: this.state.name.split(" ")[0],
+        lastName: this.state.name.split(" ")[1],
+        age: this.state.age,
+        address: this.state.address,
+        emergencyContact: this.state.contact
+      })
+      .then(res => {
+        this.props.history.push("/profile");
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
   handleTabChange(tabIndex) {
     this.setState({
@@ -36,16 +76,28 @@ class UserProfile extends Component {
               <Form.Group widths="equal">
                 <Form.Input
                   icon="user"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleInputChange}
                   iconPosition="left"
                   placeholder="Name"
                 />
                 <Form.Input
                   icon="calendar"
+                  name="age"
+                  value={this.state.age}
+                  onChange={this.handleInputChange}
                   iconPosition="left"
                   placeholder="Age"
                 />
               </Form.Group>
-              <Form.Field control={TextArea} placeholder="Address" />
+              <Form.Field
+                control={TextArea}
+                name="address"
+                onChange={this.handleInputChange}
+                value={this.state.address}
+                placeholder="Address"
+              />
               <Form.Group>
                 <Button fluid size="large">
                   Back
@@ -79,12 +131,18 @@ class UserProfile extends Component {
                 <Form.Input
                   fluid
                   icon="info"
+                  name="height"
+                  value={this.state.height}
+                  onChange={this.handleInputChange}
                   iconPosition="left"
                   placeholder="Height"
                 />
                 <Form.Input
                   fluid
                   icon="info"
+                  name="weight"
+                  value={this.state.weight}
+                  onChange={this.handleInputChange}
                   iconPosition="left"
                   placeholder="Weight"
                   type="text"
@@ -94,6 +152,9 @@ class UserProfile extends Component {
                 <Form.Input
                   fluid
                   icon="info"
+                  name="bloodGroup"
+                  value={this.state.bloodGroup}
+                  onChange={this.handleInputChange}
                   iconPosition="left"
                   placeholder="Blood Group"
                   type="text"
@@ -101,6 +162,8 @@ class UserProfile extends Component {
                 <Form.Input
                   fluid
                   icon="user circle"
+                  name="contact"
+                  onChange={this.handleInputChange}
                   iconPosition="left"
                   placeholder="Emergency Contact"
                   type="text"
@@ -141,6 +204,9 @@ class UserProfile extends Component {
             <Form size="large">
               <Form.Field
                 control={TextArea}
+                name="allergies"
+                value={this.state.alllergies}
+                onChange={this.handleInputChange}
                 placeholder="Enter any allergies that you have if any."
               />
               <Form.Group>
@@ -177,6 +243,9 @@ class UserProfile extends Component {
             </Header>
             <Form size="large">
               <Form.Field
+                name="operations"
+                value={this.state.operations}
+                onChange={this.handleInputChange}
                 control={TextArea}
                 placeholder="Enter any major operations that you had."
               />
@@ -216,12 +285,18 @@ class UserProfile extends Component {
               <Form.Group widths="equal">
                 <Form.Input
                   fluid
+                  name="provider"
+                  onChange={this.handleInputChange}
+                  value={this.state.provider}
                   icon="user outline"
                   iconPosition="left"
                   placeholder="Provider"
                 />
                 <Form.Input
                   fluid
+                  name="policyNum"
+                  value={this.state.policyNum}
+                  onChange={this.handleInputChange}
                   icon="hashtag"
                   iconPosition="left"
                   placeholder="Policy Number"
@@ -236,7 +311,12 @@ class UserProfile extends Component {
                 >
                   Back
                 </Button>
-                <Button color="blue" fluid size="large">
+                <Button
+                  color="blue"
+                  fluid
+                  size="large"
+                  onClick={this.registrationComplete}
+                >
                   Complete
                 </Button>
               </Form.Group>

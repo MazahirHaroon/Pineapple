@@ -15,15 +15,20 @@ class App extends Component {
   render() {
     return (
       <div className="main-content">
-        <Navbar />
         <Router>
-          <main>
-            <Switch>
-              <Route path="/register" component={Register} />
-              <Route path="/doctor" component={Doctor} />
-              <Route path="/" component={Patient} />
-            </Switch>
-          </main>
+          <Route path="/">
+            <div>
+              <Navbar />
+              <main>
+                <Switch>
+                  <Route path="/register" component={Register} />
+                  <Route path="/user-detail" component={UserDetails} />
+                  <Route path="/doctor" component={Doctor} />
+                  <Route path="/" component={Patient} />
+                </Switch>
+              </main>
+            </div>
+          </Route>
         </Router>
       </div>
     );

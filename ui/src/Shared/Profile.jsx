@@ -21,9 +21,15 @@ class Profile extends React.Component {
       userData: {}
     };
   }
+  componentWillMount() {
+    this.user = localStorage.getItem("user");
+    if (!this.user) {
+      this.props.push("/login");
+    }
+  }
   componentDidMount() {
     axios
-      .get(`http://20.20.7.163:3000/api/Patient/${1234}`)
+      .get(`http://20.20.7.163:3000/api/Patient/${this.props.user}`)
       .then(res => {
         this.setState({
           userData: res.data
@@ -33,7 +39,10 @@ class Profile extends React.Component {
         console.error(err);
       });
     axios
-      .get(`http://20.20.7.163:3000/api/queries/ListByPatient?id=${1234}`)
+      .get(
+        `http://20.20.7.163:3000/api/queries/ListByPatient?id=${this.props
+          .user}`
+      )
       .then(res => {
         this.setState({
           data: res.data
