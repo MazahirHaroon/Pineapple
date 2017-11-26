@@ -72,7 +72,9 @@
     "workbox-webpack-plugin": "^2.1.0"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "core-js": "^2.5.1",
+    "navbar": "^2.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router": "^4.2.0",

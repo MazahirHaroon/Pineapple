@@ -1,5 +1,44 @@
-@import-normalize; /* stylelint-disable-line */
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import-normalize;
+
+/* stylelint-disable-line */
 
 body {
   background-color: aliceblue;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Nunito", sans-serif !important;
+}
+
+.message,
+.button,
+.ui {
+  font-family: "Nunito", sans-serif !important;
+}
+
+.menuStyle {
+  height: 50px;
+  border: "none";
+  border-radius: 0;
+  box-shadow: "none";
+  margin-bottom: "1em";
+  margin-top: "4em";
+  transition: "box-shadow 0.5s ease, padding 0.5s ease";
+}
+
+.header.item {
+  padding-left: 0;
+}
+
+.main-content {
+  margin-top: 60px;
+}
+
+.patient-search {
+  margin-top: 20% !important;
 }
