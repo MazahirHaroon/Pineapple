@@ -1,0 +1,14 @@
+/**
+ * New query file
+ */
+query ListByPatient {
+  description: "List all record of a patient"
+  statement:
+      SELECT com.phoenix.HospitalRecord WHERE (patientId == _$id)
+}
+
+query ListByDoctor {
+  description: "List all record of a doctor"
+  statement:
+      SELECT com.phoenix.HospitalRecord WHERE (doctorId == _$id)
+}
