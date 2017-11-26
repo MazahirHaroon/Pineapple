@@ -24,6 +24,9 @@ class Navbar extends Component {
                 <Dropdown.Item as="a">as Doctor</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+            <Menu.Item header as="a">
+              Logout
+            </Menu.Item>
           </Menu.Menu>
         </Container>
       </Menu>

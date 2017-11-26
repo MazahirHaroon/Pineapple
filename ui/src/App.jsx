@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./Navbar";
 import Register from "./Pages/Register";
 import UserDetails from "./Pages/UserDetails";
@@ -15,10 +16,15 @@ class App extends Component {
     return (
       <div className="main-content">
         <Navbar />
-        {/* <Register /> */}
-        {/* <UserDetails /> */}
-        {/* <PatientSearch /> */}
-        <Profile />
+        <Router>
+          <main>
+            <Switch>
+              <Route path="/register" component={Register} />
+              <Route path="/doctor" component={PatientSearch} />
+              <Route path="/" component={Profile} />
+            </Switch>
+          </main>
+        </Router>
       </div>
     );
   }
