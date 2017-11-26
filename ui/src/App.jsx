@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./Navbar";
 import Register from "./Pages/Register";
 import UserDetails from "./Pages/UserDetails";
-import PatientSearch from "./Doctor/PatientSearch";
-import Profile from "./Patient/Profile";
+import Doctor from "./Doctor";
+import Patient from "./Patient";
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +20,8 @@ class App extends Component {
           <main>
             <Switch>
               <Route path="/register" component={Register} />
-              <Route path="/doctor" component={PatientSearch} />
-              <Route path="/" component={Profile} />
+              <Route path="/doctor" component={Doctor} />
+              <Route path="/" component={Patient} />
             </Switch>
           </main>
         </Router>
