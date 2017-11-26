@@ -10,3 +10,5 @@ class DocProfile extends React.Component {
     </section>;
   }
 }
+
+export default DocProfile;
