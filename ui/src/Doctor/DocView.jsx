@@ -6,14 +6,19 @@ import {
   Header,
   Image,
   Message,
-  Segment
+  Segment,
+  TextArea
 } from "semantic-ui-react";
 import axios from "axios";
 import Logo from "../logo.png";
 
-class Register extends React.Component {
+class DocView extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      diagnosis: "",
+      prescription: ""
+    };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
   }
@@ -59,29 +64,28 @@ class Register extends React.Component {
           style={{ height: "100%" }}
           verticalAlign="middle"
         >
-          <Grid.Column style={{ maxWidth: 450 }}>
+          <Grid.Column style={{ maxWidth: 800 }}>
             <Header as="h2" color="teal" textAlign="center">
-              <Image src={Logo} /> Register to create an account.
+              Enter your Diagnosis.
             </Header>
             <Form size="large" onSubmit={this.handleRegister}>
               <Segment stacked>
-                <Form.Input
-                  fluid
-                  name="aadhar"
+                <Form.Field
+                  control={TextArea}
+                  name="diagnosis"
                   onChange={this.handleInputChange}
-                  icon="user"
-                  iconPosition="left"
-                  placeholder="Aadhar Number"
+                  value={this.state.diagnosis}
+                  placeholder="Enter your Diagnosis"
                 />
-                <Form.Input
-                  fluid
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="OTP"
-                  type="text"
+                <Form.Field
+                  control={TextArea}
+                  name="prescription"
+                  onChange={this.handleInputChange}
+                  value={this.state.prescription}
+                  placeholder="Enter the prescription"
                 />
-                <Button color="teal" fluid size="large">
-                  Register
+                <Button color="blue" fluid size="large">
+                  Submit
                 </Button>
               </Segment>
             </Form>
@@ -92,4 +96,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default DocView;
