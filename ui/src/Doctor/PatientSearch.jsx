@@ -21,7 +21,7 @@ class PatientSearch extends React.Component {
   }
   handleSearch(event) {
     event.preventDefault();
-    localStorage.setItem("search", this.state.search);
+    localStorage.setItem("user", this.state.search);
     this.props.history.push("/doctor/patient");
   }
   render() {

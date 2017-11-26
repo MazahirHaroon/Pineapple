@@ -4,10 +4,12 @@ import Profile from "../Shared/Profile";
 
 class DocProfile extends React.Component {
   render() {
-    <section>
-      <Button positive>Add Observation</Button>
-      <Profile />
-    </section>;
+    return (
+      <section>
+        <Button positive>Add Observation</Button>
+        <Profile />
+      </section>
+    );
   }
 }
 
