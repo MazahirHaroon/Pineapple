@@ -1,0 +1,47 @@
+namespace com.phoenix
+
+import com.base.Person
+import com.base.Institution
+
+abstract concept RecordFormat {
+  o String diagnosis
+  o String prescription
+}
+
+participant Doctor identified by aadharId extends Person {
+  o String aadharId
+  o String speciality optional
+}
+
+participant Patient identified by aadharId extends Person {
+  o String aadharId
+}
+
+participant Hospital identified by hospitalId extends Institution {
+  o String hospitalId
+}
+
+participant InsuranceAgency identified by agencyId extends Institution {
+  o String agencyId
+}
+
+asset HospitalRecord identified by recordId {
+  o String recordId
+  o String patientId
+  o String doctorId
+  o String diagnosis
+  o String prescription
+  o String billAmt
+  o String polOwner default="True"
+}
+
+transaction VisitDoctor {
+  --> HospitalRecord record
+  o String newDiagnosis
+  o String newPrescription
+  o String patientId
+  o String doctorId
+  o String newBillAmt
+  o String newPolOwner
+}
+
