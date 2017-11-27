@@ -10,7 +10,7 @@ class Doctor extends React.Component {
       <section>
         <Switch>
           <Route path="/doctor/patient" component={DocProfile} />
-          <Route path="/view" component={DocView} />
+          <Route path="/doctor/view" component={DocView} />
           <Route path="/" component={PatientSearch} />
         </Switch>
       </section>

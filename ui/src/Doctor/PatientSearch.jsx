@@ -21,7 +21,7 @@ class PatientSearch extends React.Component {
   }
   handleSearch(event) {
     event.preventDefault();
-    localStorage.setItem("user", this.state.search);
+    localStorage.setItem("search", this.state.search);
     this.props.history.push("/doctor/patient");
   }
   render() {
@@ -30,6 +30,8 @@ class PatientSearch extends React.Component {
         centered
         container
         columns={1}
+        width={4}
+        style={{ maxWidth: 450 }}
         textAlign="center"
         verticalAlign="middle"
         className="patient-search"

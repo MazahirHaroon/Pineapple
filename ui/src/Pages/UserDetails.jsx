@@ -8,6 +8,7 @@ import {
   Tab,
   Transition
 } from "semantic-ui-react";
+import BASE_URL from "../constants";
 import axios from "axios";
 
 class UserProfile extends Component {
@@ -33,7 +34,7 @@ class UserProfile extends Component {
   registrationComplete(event) {
     event.preventDefault();
     axios
-      .post(`http://20.20.7.163:3000/api/Patient`, {
+      .post(`${BASE_URL}/api/Patient`, {
         $class: "com.phoenix.Patient",
         aadharId: localStorage.getItem("user"),
         firstName: this.state.name.split(" ")[0],
@@ -44,6 +45,14 @@ class UserProfile extends Component {
       })
       .then(res => {
         this.props.history.push("/profile");
+        axios.post(`${BASE_URL}/api/HospitalRecord`, {
+          $class: "com.phoenix.HospitalRecord",
+          recordId: Math.floor(Math.random() * 1000 + 1),
+          patientId: localStorage.getItem("user"),
+          doctorId: Math.floor(Math.random() * 1000 + 1),
+          diagnosis: "Initial",
+          prescription: "Full Well"
+        });
       })
       .catch(err => {
         console.error(err);

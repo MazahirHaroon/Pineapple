@@ -9,6 +9,7 @@ import {
   Segment,
   TextArea
 } from "semantic-ui-react";
+import BASE_URL from "../constants.js";
 import axios from "axios";
 import Logo from "../logo.png";
 
@@ -19,8 +20,32 @@ class DocView extends React.Component {
       diagnosis: "",
       prescription: ""
     };
+    this.addObservation = this.addObservation.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+  }
+  addObservation(event) {
+    event.preventDefault();
+    const lastTransaction = localStorage.getItem("lastTransaction");
+    axios
+      .post(`${BASE_URL}/api/VisitDoctor`, {
+        $class: "com.phoenix.VisitDoctor",
+        record: lastTransaction.recordId,
+        newDiagnosis: this.state.diagnosis,
+        newPrescription: this.state.prescription,
+        patientId: localStorage.getItem("search"),
+        doctorId: localStorage.getItem("user"),
+        transactionId: Math.floor(Math.random() * 1000 + 1),
+        timestamp: new Date().toISOString()
+      })
+      .then(res => {
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
   handleInputChange(event) {
     const target = event.target;
@@ -34,7 +59,7 @@ class DocView extends React.Component {
   handleRegister(event) {
     event.preventDefault();
     axios
-      .get(`http://20.20.7.163:3000/api/Patient/${this.props.aadhar}`)
+      .get(`${BASE_URL}/api/Patient/${this.props.aadhar}`)
       .then(res => {
         if (res.statusCode === 200) {
           localStorage.setItem("user", this.state.aadhar);
@@ -84,7 +109,12 @@ class DocView extends React.Component {
                   value={this.state.prescription}
                   placeholder="Enter the prescription"
                 />
-                <Button color="blue" fluid size="large">
+                <Button
+                  color="blue"
+                  fluid
+                  size="large"
+                  onClick={this.addObservation}
+                >
                   Submit
                 </Button>
               </Segment>

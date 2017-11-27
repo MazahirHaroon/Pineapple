@@ -10,6 +10,7 @@ class Navbar extends Component {
     this.state = {
       showLogin: true
     };
+    this.logout = this.logout.bind(this);
   }
   componentWillMount() {
     if (this.props.location.pathName === "/register") {
@@ -17,6 +18,11 @@ class Navbar extends Component {
         showLogin: false
       });
     }
+  }
+  logout(event) {
+    event.preventDefault();
+    localStorage.clear();
+    this.props.history.push("/register");
   }
   render() {
     const { activeItem } = this.state;
@@ -27,7 +33,7 @@ class Navbar extends Component {
             <Image size="mini" src={Logo} />
           </Menu.Item>
           <Menu.Menu position="right">
-            {this.state.showLogin && (
+            {!this.state.showLogin && (
               <Dropdown text="Login" pointing className="link item">
                 <Dropdown.Menu>
                   <Dropdown.Item as="a">as Patient</Dropdown.Item>
@@ -35,8 +41,8 @@ class Navbar extends Component {
                 </Dropdown.Menu>
               </Dropdown>
             )}
-            {!this.state.showLogin && (
-              <Menu.Item header as="a">
+            {this.state.showLogin && (
+              <Menu.Item header onClick={this.logout} as="a">
                 Logout
               </Menu.Item>
             )}

@@ -8,6 +8,7 @@ import {
   Message,
   Segment
 } from "semantic-ui-react";
+import BASE_URL from "../constants";
 import axios from "axios";
 import Logo from "../logo.png";
 
@@ -29,9 +30,10 @@ class Register extends React.Component {
   handleRegister(event) {
     event.preventDefault();
     axios
-      .get(`http://20.20.7.163:3000/api/Patient/${this.props.aadhar}`)
+      .get(`${BASE_URL}/api/Patient/${this.state.aadhar}`)
       .then(res => {
-        if (res.statusCode === 200) {
+        console.log(res);
+        if (res.status === 200) {
           localStorage.setItem("user", this.state.aadhar);
           this.props.history.push("/");
         } else {
